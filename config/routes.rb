@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # 顧客用
+  # 顧客用 #顧客の会員登録#顧客のログイン
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -10,41 +10,13 @@ Rails.application.routes.draw do
    get '/' => 'homes#top'
    get 'homes/about' =>'homes#about', as: "about"
    get '/my_page' => 'customers#show'
-   get 'costomers/edit'
+   get 'costomers/edit'#顧客登録情報
    patch 'costomers/update'
    get 'customers/unsubscribe'
    get 'customers/withdrawal'   
-   
-  end
-
-  #商品
-  scope module: :items do
-    resources :items, only: [:index, :show]
-  end
-
-  #顧客の会員登録
-  scope module: :registrations do
-    resources :registrations, only: [:new, :create]
-  end
-
-  #顧客のログイン
-  scope module: :sessions do
-    resources :sessions, only: [:new, :create, :destroy]
-  end
-
-  #顧客登録情報
-  scope module: :public do
-
-  end
-
- #カート
-  scope module: :cart_items do
-    delete 'delete/destroy_all'
-    resources :cart_items, only:[:index, :update, :create, :destroy]
-  end
-
- #注文
-  scope module: :orders do
+   resources :items, only: [:index, :show]
+   delete 'delete/destroy_all'
+   resources :cart_items, only:[:index, :update, :create, :destroy]
    post 'orders/confirm'
    get 'orders/complete'
    resources :orders, only:[:new, :create, :index, :show]
@@ -57,6 +29,8 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/admin' => 'homes#top'
     resources :admin, only: [:new, :create, :show, :edit, :index, :update, :destroy]
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
