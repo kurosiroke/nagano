@@ -5,9 +5,11 @@ class Public::ItemsController < ApplicationController
     end
     
     def create
+      
     end
     
-    def upsate
+    def update
+      @item = Item.find(params[:id])
     end
     
     def destroy
