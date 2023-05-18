@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Public::ConfirmationsController < Devise::ConfirmationsController
-  before_action :authenticate_customers!, except: [:top, :about, :items, :registrations]
+  before_action :authenticate_customer!, except: [:top, :about, :items, :registrations]
   # GET /resource/confirmation/new
   # def new
   #   super

@@ -1,5 +1,5 @@
 class Public::ItemsController < ApplicationController
-  before_action :authenticate_customers!, except: [:top, :about, :items, :registrations]
+  before_action :authenticate_customer!, except: [:top, :about, :items, :registrations]
     def index
       @items = Item.all
     end

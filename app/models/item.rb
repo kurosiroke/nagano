@@ -1,8 +1,6 @@
 class Item < ApplicationRecord
-    def index
-    end
-    
-    def show
-    end
+
+    belongs_to :cart_items, :orders
+
     
 end
