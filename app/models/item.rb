@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
 
-    belongs_to :cart_items, :orders
+    has_many :cart_items, :order_details
 
     
 end
