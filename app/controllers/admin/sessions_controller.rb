@@ -25,10 +25,11 @@ class Admin::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
     def after_sign_in_path_for(resource)
-    items_path(resource)
+    admin_path
     end
     
     def after_sign_out_path_for(resource)
-    admin_sign_in_path
+    new_admin_session_path
     end
+    
 end

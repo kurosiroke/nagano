@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
   namespace :admin do
-    get '/admin' => 'homes#top'
+    get '/' => 'homes#top'
     resources :admin, only: [:new, :create, :show, :edit, :index, :update, :destroy]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]

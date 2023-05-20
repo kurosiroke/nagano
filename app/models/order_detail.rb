@@ -1,3 +1,4 @@
 class OrderDetail < ApplicationRecord
-     belongs_to :orders, :items
+     belongs_to :order
+     belongs_to :item
 end

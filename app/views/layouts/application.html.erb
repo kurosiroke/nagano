@@ -53,12 +53,12 @@
                 <% end %>
               </li>
               <li class="nav-item">
-                 <%= link_to admin_customer_path, class: 'nav-link text-light' do %>
+                 <%= link_to admin_customers_path, class: 'nav-link text-light' do %>
                    注文履歴一覧
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to destroy_admin_session_path, class: 'nav-link text-light' do %>
+                <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
                   サインアウト
                 <% end %>
               </li>
