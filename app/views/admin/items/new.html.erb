@@ -1,0 +1,31 @@
+<p id="notice"></p>
+ <div class="container px-5 px-sm-0">
+  <div class="row">
+   <h3>商品新規登録</h3>
+  </div><br>
+   <div class="btn-wrapper col-10 mx-auto">
+   <%= form_with model: @item do |f| %>
+   <div class="form-group">
+    <label for="itme_image">商品画像</label>
+      <%= f.file_field :image, accept: "image/*", class: "w-100" %>
+   </div>
+   <div class="form-group">
+    <label for="item_name">商品名</label>
+      <%= f.text_field :name %>
+   </div>
+   <div class="form-group">
+    <label for="item_introduction">商品説明</label>
+      <%= f.text_area :introduction %>
+   </div>
+   <div class="form-group">
+    <label for="item_price">税抜価格</label>
+      <%= f.number_field :price %>
+   </div>
+   <div class="form-group">
+    <div class="d-grid gap-2 d-md-block">
+    <%= f.submit "新規登録", class: "btn btn-success btn-default btn-sm" %>
+   <% end %>
+    </div>
+   </div>
+  </div>
+ </div>
