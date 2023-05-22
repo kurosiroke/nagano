@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
+  before_action :customer_state, only: [:create]
+
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -30,6 +32,20 @@ class Public::SessionsController < Devise::SessionsController
     
     def after_sign_out_path_for(resource)
     root_path
+    end
+    
+    protected
+# 退会しているかを判断するメソッド↓
+    def customer_state
+  # 【処理内容1】 emailが存在していればそのアカウントをとってくる
+    @customer = Customer.find_by(email: params[:customer][:email])
+  # アカウントのメールアドレスが正しいかを確認する↓
+    return if !@customer
+  # 【処理内容2】パスワード間違ってたらはじく↓
+    if @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted
+    # 【処理内容3　↓　飛ばず
+    redirect_to new_user_session_path
+    end
     end
   
 end

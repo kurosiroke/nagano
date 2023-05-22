@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'public/homes#top'
   # 顧客用 #顧客の会員登録#顧客のログイン
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
