@@ -2,30 +2,31 @@ class Admin::CustomersController < ApplicationController
     before_action :authenticate_admin!, except: [:top, :about, :items, :registrations]
     
     def index 
-      @admin = current_admin
-      @admins = Admin.all
-      @item_new = Item.new
+      @customers = Customer.all
     end
 
     def show
-        @item_new = Item.new
-        @admin = admin.find(paramus[:id])
-        @items = @admin.Items
+      @customer = Customer.find(params[:id])
     end
 
     def edit
-        @admin = Admin.find(params[:id])
+      @customer = Customer.find(params[:id])
     end
     
     def update
-        @admin = Admin.new(admin_params)
-        @admin.usre_id = Current_admin.id
-    if @admin.save
-      radirect_to admin_path
+      @customer = Customer.new(customer_params)
+      @customer.usre_id = Admin_costomer.id
+    if @customer.save
+      radirect_to customer_path
     else
       render :new
     end
     
     end
+    
+    private
+     def customer_params
+     params.require(:customer).permit(:name, :email, :is_deleted)
+     end
     
 end

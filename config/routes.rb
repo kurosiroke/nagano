@@ -4,6 +4,10 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
+   # 管理者
+  devise_for :admin, skip: [:registrations, :passwords], controllers: {
+    sessions: "admin/sessions"
+  }
 
   #顧客トップ
   scope module: :public do
@@ -22,10 +26,7 @@ Rails.application.routes.draw do
    resources :orders, only:[:new, :create, :index, :show]
   end
 
-  # 管理者
-  devise_for :admin, skip: [:registrations, :passwords], controllers: {
-    sessions: "admin/sessions"
-  }
+ 
   namespace :admin do
     get '/' => 'homes#top'
     resources :admin, only: [:new, :create, :show, :edit, :index, :update, :destroy]
