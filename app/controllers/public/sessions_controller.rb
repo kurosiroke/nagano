@@ -27,25 +27,26 @@ class Public::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
     def after_sign_in_path_for(resource)
-    items_path(resource)
+       items_path(resource)
     end
     
     def after_sign_out_path_for(resource)
-    root_path
+       root_path
     end
     
     protected
 # 退会しているかを判断するメソッド↓
     def customer_state
-  # 【処理内容1】 emailが存在していればそのアカウントをとってくる
-    @customer = Customer.find_by(email: params[:customer][:email])
-  # アカウントのメールアドレスが正しいかを確認する↓
-    return if !@customer
-  # 【処理内容2】パスワード間違ってたらはじく↓
-    if @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted
-    # 【処理内容3　↓　飛ばず
-    redirect_to new_user_session_path
-    end
+           #  emailが存在していればそのアカウントをとってくる
+        @customer = Customer.find_by(email: params[:customer][:email])
+          # アカウントのメールアドレスが正しいかを確認↓
+        return if !@customer
+         #パスワード間違ってたらはじく↓
+        if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted)
+        # ↓　飛ばず
+        redirect_to new_user_session_path
+    
+        end
     end
   
 end

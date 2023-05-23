@@ -50,7 +50,12 @@
         </div>
     </div>
     <div class="d-flex justify-content-center">
-     <%= link_to "編集する", edit_admin_item_path, class: 'btn btn-sm btn-success' %>
+     <table>
+      <tr>
+       <th><%= link_to "編集する", edit_admin_customer_path, class: 'btn btn-sm btn-success' %></th><br>
+       <th><%= link_to "注文履歴一覧を見る", admin_items_path, class: 'btn btn-sm btn-success' %></th>
+      </tr>
+     </table>
     </div>
   </div>
 </div>
