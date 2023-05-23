@@ -8,27 +8,21 @@
   <div class="field">
      <table>
          <tr>
-           <th style="padding-right: 5em">名前</th>
-           <th style="padding-right: 1em">(姓)</th>
-           <td><%= f.text_field :last_name, autofocus:true, autocomplete: "last_name" %></td>
-           <th style="padding-right: 1em">(名)</th>
-           <td><%= f.text_field :first_name %></td>
+           <th>名前</th>
+           <th>(姓)<%= f.text_field :last_name, autofocus:true, autocomplete: "last_name" %></th>
+           <th>(名)<%= f.text_field :first_name %></th>
+           <th></th>
          </tr>
-     </table>
   </div>
   <div class="field">
-     <table>
          <tr>
-           <th style="padding-right: 3em">フリガナ</th>
-           <th>(セイ)</th>
-           <td><%= f.text_field :last_name_kana %></td>
-           <th>(メイ)</th>
-           <td><%= f.text_field :first_name_kana %></td>
+           <th>フリガナ</th>
+           <th>(セイ)<%= f.text_field :last_name_kana %></th>
+           <th>(メイ)<%= f.text_field :first_name_kana %></tH>
+           <th></th>
          </tr>
-     </table>
   </div>
   <div class="field">
-    <table>
      <tr>
        <th style="padding-right: 3em">メールアドレス</th>
        <td><%= f.email_field :email %></td>
@@ -89,5 +83,4 @@
   </div>
   
   <h3>既に登録済みの方</h3>
-  <p> こちらからログインしてください</p>
-    <%= render "public/shared/links" %>
+  <p> <%= link_to "こちら", new_session_path(resource_name) %>からログインしてください</p>
