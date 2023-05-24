@@ -6,75 +6,64 @@
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
   <div class="field">
-     <table>
-         <tr>
-           <th>名前</th>
-           <th>(姓)<%= f.text_field :last_name, autofocus:true, autocomplete: "last_name" %></th>
-           <th>(名)<%= f.text_field :first_name %></th>
-           <th></th>
-         </tr>
+    <table>
+     <tr>
+       <th>名前</th>
+       <th style="padding-right: 3em">(姓)<%= f.text_field :last_name, autofocus:true, autocomplete: "last_name" %></th>
+       <th>(名)<%= f.text_field :first_name %></th>
+       <th></th>
+     </tr>
   </div>
   <div class="field">
-         <tr>
-           <th>フリガナ</th>
-           <th>(セイ)<%= f.text_field :last_name_kana %></th>
-           <th>(メイ)<%= f.text_field :first_name_kana %></tH>
-           <th></th>
-         </tr>
+     <tr>
+       <th>フリガナ</th>
+       <th>(セイ)<%= f.text_field :last_name_kana %></th>
+       <th>(メイ)<%= f.text_field :first_name_kana %></tH>
+     </tr>
   </div>
   <div class="field">
      <tr>
        <th style="padding-right: 3em">メールアドレス</th>
-       <td><%= f.email_field :email %></td>
-     </tr>
-    </table>
+       <th><%= f.email_field :email %></th>
+       <th></th>
   </div>
   <div class="field">
-    <table>
      <tr>
        <th>郵便番号(ハイフンなし)</th>
-       <td><%= f.text_field :postal_code %></td>
+       <th><%= f.text_field :postal_code %></th>
      </tr>
-    </table>
   </div>
   <div class="field">
-    <table>
      <tr>
        <th style="padding-right: 3em">住所</th>
-       <td><%= f.text_field :address %></td>
+       <th><%= f.text_field :address %></th>
      </tr>
-    </table>
   </div>
   <div class="field">
-    <table>
      <tr>
-       <th>電話番号(ハイフンなし)</th>
-       <td><%= f.text_field :telephone_number %></td>
+       <th style="padding-right: 5em">電話番号(ハイフンなし)</th>
+       <th><%= f.text_field :telephone_number %></th>
      </tr>
-    </table>
   </div>
   <div class="field">
-    <table>
      <tr>
        <th>パスワード(６文字以上)</th>
-       <td> 
+       <th> 
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %><br />
         <%= f.password_field :password, autocomplete: "new-password" %>
-        </td>
+        </th>
      </tr>
-    </table>
   </div>
   <div class="field">
-    <table>
      <tr>
        <th>パスワード(確認用)</th>
-       <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+       <th><%= f.password_field :password_confirmation, autocomplete: "new-password" %></th>
      </tr>
     </table>
   </div>
-</div>
+</div><br>
   <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
   <div class="actions">
     <%= f.submit "新規登録", class: "btn btn-sm btn-success" %>
