@@ -8,8 +8,12 @@ class Public::ItemsController < ApplicationController
       
     end
     
+    def show
+        @item = Item.find(params[:id])
+    end
+    
     def update
-      @item = Item.find(params[:id])
+        @item = Item.find(params[:id])
     end
     
     def destroy
@@ -20,5 +24,8 @@ class Public::ItemsController < ApplicationController
     
       
     private
-
+     def item_params
+     params.require(:item).permit(:image, :name, :introduction, :price)
+     
+     end
 end
