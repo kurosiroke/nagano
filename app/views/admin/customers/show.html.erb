@@ -38,20 +38,21 @@
        </tr>
        <tr>
          <th>会員ステータス</th>
-         <td><%= @customer.is_deleted %>
-              <% if customer_is_deleted? %>
+         <td>
+          <% if customer_signed_in? %>
+          <%= @customer.is_deleted %>
+          "false"
+          <% else %>
+          <%= @customer.is_deleted %>
+          <% end %>
          </td>
        </tr>
-       
-     </table>
-    </div>
-    <div class="d-flex justify-content-center">
-     <table>
-      <tr>
+      </table>
+      <table>
+       <tr>
        <th><%= link_to "編集する", edit_admin_customer_path, class: 'btn btn-sm btn-success' %></th><br>
        <th><%= link_to "注文履歴一覧を見る", admin_items_path, class: 'btn btn-sm btn-primary' %></th>
-      </tr>
+       </tr>
      </table>
-    </div>
   </div>
-</div>
+ </div>
