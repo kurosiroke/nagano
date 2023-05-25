@@ -1,17 +1,17 @@
-<div class="container px-5 px-sm-0">
+<div class="main-container">
     
 <p>ようこそ、ながのCAKEへ！</p><br>
 <p>このサイトは、ケーキ販売のECサイトになります。</p><br>
 <p>会員でない方も商品の閲覧はできますが、</p><br>
 <p>購入には会員登録が必要になります。</p><br>
-
+</div>
 <h2>新着商品</h2>
    <div class="row">
     <% @items.each do |item| %>
     <div class="col-md-3">
       <%= link_to image_tag item.get_image(100,100) %><br>
       <%= link_to item.name,admin_item_path(item.id) %><br>
-      <%= (item.price * 1.1).floor %><br>
+      ￥<%= (item.price * 1.1).floor %><br>
     </div>
     <% end %>
    </div>
