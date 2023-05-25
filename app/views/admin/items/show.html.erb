@@ -1,9 +1,6 @@
 <p id="notice"></p>
 <div class="container px-5 px-sm-0">
-  <div class="row">
-   <h2>商品説明</h2>
-  </div>
-   <div class="container">
+   <h3>商品説明</h3><br>
     <div class="row">
        <div class="col">
          <%= image_tag @item.get_image(300,300) %>
@@ -32,5 +29,4 @@
     <div class="d-flex justify-content-center">
      <%= link_to "編集する", edit_admin_item_path, class: 'btn btn-sm btn-success' %>
     </div>
-  </div>
 </div>
