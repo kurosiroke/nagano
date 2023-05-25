@@ -9,45 +9,32 @@
     <table>
      <tr>
        <th>名前</th>
-       <th>(姓)<%= f.text_field :last_name, autofocus:true, autocomplete: "last_name" %></th>
-       <th>(名)<%= f.text_field :first_name %></th>
+       <th>(姓)　<%= f.text_field :last_name, autofocus:true, autocomplete: "last_name" %></th>
+       <th>(名)　<%= f.text_field :first_name %></th>
        <th></th>
      </tr>
-  </div>
-  <div class="field">
      <tr>
        <th>フリガナ</th>
        <th>(セイ)<%= f.text_field :last_name_kana %></th>
        <th>(メイ)<%= f.text_field :first_name_kana %></tH>
        <th></th>
      </tr>
-    
-  </div>
-  <div class="field">
      <tr>
-       <th style="padding-right: 3em">メールアドレス</th>
+       <th>メールアドレス</th>
        <td><%= f.email_field :email %></td>
-    </tr>
-  </div>
-  <div class="field">
-     <tr>
+     </tr>
+   　 <tr>
        <th>郵便番号(ハイフンなし)</th>
        <td><%= f.text_field :postal_code %></td>
      </tr>
-  </div>
-  <div class="field">
      <tr>
-       <th style="padding-right: 3em">住所</th>
+       <th>住所</th>
        <td><%= f.text_field :address %></td>
      </tr>
-  </div>
-  <div class="field">
      <tr>
        <th style="padding-right: 5em">電話番号(ハイフンなし)</th>
        <td><%= f.text_field :telephone_number %></td>
      </tr>
-  </div>
-  <div class="field">
      <tr>
        <th>パスワード(６文字以上)</th>
        <td> 
@@ -57,8 +44,6 @@
         <%= f.password_field :password, autocomplete: "new-password" %>
         </td>
      </tr>
-  </div>
-  <div class="field">
      <tr>
        <th>パスワード(確認用)</th>
        <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
@@ -70,7 +55,7 @@
     <% end %>
     </div><br>
     <div class="row">
-      <h3>既に登録済みの方</h3>
-      <p> <%= link_to "こちら", new_session_path(resource_name) %>からログインしてください</p>
+      <h5>既に登録済みの方</h5><br>
+      <p> <%= link_to "こちら", new_session_path(resource_name) %>　からログインしてください</p>
     </div>
  </div>  
