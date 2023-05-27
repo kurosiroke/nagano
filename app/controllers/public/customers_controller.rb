@@ -2,7 +2,8 @@ class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!, except: [:top, :about, :items, :registrations]
   
   def show
-    #@customer =  Customer.find(params[:id])
+    @customer =  Customer.find(params[:id])
+    
   end
 
   def edit
@@ -21,5 +22,9 @@ class Public::CustomersController < ApplicationController
     reset_session
     ridirect_to root_path
   end
-
+    
+  private
+     def customer_params
+     params.require(:customer).permit(:full_name, :first_name, :email, :is_deleted)
+     end
 end
