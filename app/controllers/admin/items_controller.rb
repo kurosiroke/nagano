@@ -2,7 +2,7 @@ class Admin::ItemsController < ApplicationController
     before_action :authenticate_admin!, except: [:top, :about, :items, :registrations]
     
     def index
-        @items =Item.all
+        @items = Item.all
     end
     
     def new
