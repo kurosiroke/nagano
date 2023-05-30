@@ -1,15 +1,17 @@
 <p id="notice"></p>
 <div class="container px-5 px-sm-0">
     <h3>マイページ</h3>
-    <table>
+    <div>
+    <table class="col-2">
      <tr>
        <th>登録情報</th>
        <th> <%= link_to "編集する", costomers_edit_path, class: 'btn btn-sm btn-success' %></th>
      </tr>
     </table>
+    </div>
     <div class="row">
-     <div class="col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-     <table>
+     <div class="col-md-8 col-lg-5 px-5 px-sm-0">
+     <table class="table col-10 table-bordered">
          <th>氏名</th>
           <td>
           <%= @customer.full_name %>
@@ -40,4 +42,10 @@
      </table>
      </div>
     </div>
+    <table class="col-2">
+     <tr>
+       <th>注文履歴</th>
+       <th> <%= link_to "一覧を見る", orders_path, class: 'btn btn-sm btn-primary' %></th>
+     </tr>
+    </table>
 </div>

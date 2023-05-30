@@ -1,13 +1,13 @@
 <p id="notice"></p>
 <div class="container px-5 px-sm-0">
   <h3>ショッピングカート</h3>
-      <div class="text-right">
+      <div class="col-9 text-right">
         <% if customer_signed_in?%>
         <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete,  "data-confirm" => "本当に削除しますか？" ,class: 'btn btn-sm btn-danger' %>
         <% end %>
       </div>
-  <table class="table table-hover table-inveres">
-    <thesd>
+  <table class="table col-10 table-bordered">
+    <tbody>
       <tr>
         <th>商品名</th>
         <th>単価(税込)</th>
@@ -15,28 +15,53 @@
         <th>小計</th>
         <th></th>
       </tr>
-    </thead>
-    <tbody>
+        <% total = 0 %>  <%#合計金額totalの初期化%>
+        
+    <% if current_customer.cart_items.present? %><%#カート内に商品があった場合%>
     <% @cart_items.each do |cart_item| %>
     <% @total_cash = @total_cash+ cart_item.subtotal %>
-      <tr>
-        <td><%= cart_item.item.name %></td>
-        <td><%= cart_item.item.with_tax_price %></td>
         <td>
-          <%= form_with model: cart_item, url: cart_item_path(cart_item.id) do |f| %>
-          <%= f.select :amount, [['１',1], ['２',2], ['３',3]] %>
-          <%= f.submit "変更", class: 'btn btn-sm btn-success' %>
+          <%= image_tag cart_item.item.get_image(100,100) %> <%##商品画像%>
+          <%= cart_item.item.name %>
+        </td>
+        <td>
+          <%= (cart_item.item.price*1.1).to_i %>　<%#商品単価(価格×1.08)%>
+        </td>
+        <td>
+          <%= form_with model: cart_item, url: cart_item_path(cart_item.id), local: true, method: :patch do |f| %>
+            <%= f.select :amount, [['１',1], ['２',2], ['３',3]] %>
+            <%= f.submit "変更", class: 'btn btn-sm btn-success' %>
           <% end %>
         </td>
-        <td><%= cart_item.subtotal %></td>
+        <td>
+          <%= cart_item.subtotal %>
+        </td>
+        <td>
+         <%= link_to "削除する", cart_item_path(cart_item.id, cart_item), method: :delete,class: "btn btn-danger" %>
+      　 </td>
         <% @total_cash +=  cart_item.subtotal %>
+    　　  </tr>
+    <% end %>
+    <% end %>
+    </tbody>
+ </table>
+  <div class="container">
+   <div class="row">
+    <div class="col-7 text-left">
+     <%= link_to "買い物を続ける", items_path, class: 'btn btn-sm btn-primary' %>
+  </div>
+   <table class="table table-bordered col-2 text-right ml-5">
+      <tr>
+        <td class="bg-light text-center">合計金額</td>
+        <td class="text-center"><%= @total.round.to_s(:delimited)%></td>
       </tr>
-  <% end %>
-   </tbody>
-  </table>
-  <div>
-   <% if customer_signed_in?%>
-   <%= link_to "買い物を続ける", items_path, class: 'btn btn-sm btn-primary' %>
-   <% end %>
+    </table>
+  </div>
+</div>
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-6">
+       <%= link_to "情報入力に進む", new_order_path, class:"btn btn-success ml-4" %>
+    </div>
   </div>
 </div>
