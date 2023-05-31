@@ -25,5 +25,7 @@ class Customer < ApplicationRecord
     redirect_to root_path
   end
 
-    
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end 
 end

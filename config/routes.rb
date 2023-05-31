@@ -21,9 +21,9 @@ Rails.application.routes.draw do
    get 'homes/about' =>'homes#about', as: "about"
    get '/my_page' => 'customers#show'
    get 'costomers/edit' => 'customers#edit'#顧客登録情報
-   patch 'costomers/update'
-   get 'customers/unsubscribe'
-   get 'customers/withdrawal'   
+   patch 'costomers/update' => 'customers#update'
+   get 'customers/unsubscribe' => 'customers#unsubscribe'
+   patch 'customers/withdrawal' => 'customers#/withdrawal'
    resources :items, only: [:index, :show]
    delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
    resources :cart_items, only:[:index, :update, :create, :destroy]
