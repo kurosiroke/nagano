@@ -20,6 +20,7 @@
            <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav ml-auto">
               <% if customer_signed_in? %>
+              <%#= current_customer.name %>
               <li class="nav-item">
                 <%= link_to my_page_path, class: 'nav-link text-light' do %>
                   マイページ

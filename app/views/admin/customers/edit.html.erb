@@ -7,7 +7,6 @@
     <%= form_with model: @customer, url: admin_customer_path do |f| %> 
      <div class="form-group">
        <label for="customer_id"></label>
-       
        <table>
          <tr>
           <th>会員ID</th>
@@ -40,7 +39,7 @@
           <th></th>
         </tr>
         <tr>
-          <th>メールアドレス</th>
+          <th style="padding-right: 3em">メールアドレス</th>
           <th><%= f.email_field :email %></th>
           <th></th>
         </tr>
@@ -50,9 +49,12 @@
           <th></th>
         </tr>
        </table>
-       <div class="text-center"><%= link_to "変更を保存", admin_customers_path, class: 'btn btn-sm btn-success' %></div>
        </div>
      <% end %>
+     <div class="text-center">
+        <%= link_to "変更を保存", admin_customer_path, class: 'btn btn-sm btn-success' %>
+     </div>
   　</div>
   </div>
+  
           

@@ -20,7 +20,7 @@ Rails.application.routes.draw do
    get '/' => 'homes#top'
    get 'homes/about' =>'homes#about', as: "about"
    get '/my_page' => 'customers#show'
-   get 'costomers/edit'#顧客登録情報
+   get 'costomers/edit' => 'customers#edit'#顧客登録情報
    patch 'costomers/update'
    get 'customers/unsubscribe'
    get 'customers/withdrawal'   
