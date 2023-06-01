@@ -44,7 +44,7 @@ class Public::SessionsController < Devise::SessionsController
          #パスワード間違ってたらはじく↓
         if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted)
         # ↓
-        redirect_to new_user_session_path
+        redirect_to new_customer_registration_path
         
         end
     end
