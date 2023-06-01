@@ -17,10 +17,10 @@ class Public::CustomersController < ApplicationController
   end
 
   def withdrawal
-    @customer = current_customer(params[:id])
-    @customer.update(is_deleted: true)
+    @customer = current_customer
+    @customer.update(is_deleted: false)
     reset_session
-    ridirect_to root_path
+    redirect_to root_path
   end
     
   private

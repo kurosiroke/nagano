@@ -5,11 +5,7 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-    # 退会確認画面
-  get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
-  # 論理削除用のルーティング
-  patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
-  
+   
    # 管理者
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -22,8 +18,8 @@ Rails.application.routes.draw do
    get '/my_page' => 'customers#show'
    get 'costomers/edit' => 'customers#edit'#顧客登録情報
    patch 'costomers/update' => 'customers#update'
-   get 'customers/unsubscribe' => 'customers#unsubscribe'
-   patch 'customers/withdrawal' => 'customers#/withdrawal'
+   get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe' # 退会確認画面
+   patch 'customers/withdrawal' => 'customers#withdrawal', as: 'withdrawal'  # 論理削除用のルーティング
    resources :items, only: [:index, :show]
    delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
    resources :cart_items, only:[:index, :update, :create, :destroy]
