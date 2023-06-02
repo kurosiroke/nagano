@@ -1,0 +1,43 @@
+<div "container">
+    <div class='row mb-3'>
+        <div class='col-8 offset-1'>
+          <h4 class="pt-3">注文情報確認</h4>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-7 offset-1'>
+          <table class='table table-bordered border-dark'>
+            <tr class="table-secondary">
+                <th>商品名</th>
+                <th>単価(税込)</th>
+                <th>数量</th>
+                <th>小計</th>
+            </tr>
+            <!--合計金額totalの初期化-->
+            <% total = 0 %>
+            <% @cart_items.each do |cart_item| %>
+              <tr>
+                <td>
+                  <%= image_tag cart_item.item.get_image(100,100) %> <%##商品画像%>
+                  <%= cart_item.item.name %>
+                </td>
+                <td>
+                  <%= (cart_item.item.price*1.1).to_i %>　<%#商品単価(価格×1.08)%>
+                </td>
+                <td>
+                  <%= cart_item.amount %>
+                </td>
+                <td>
+                  <!--小計の計算-->
+                  <% subtotal = ((cart_item.item.price*cart_item.amount)*1.1).to_i %>
+                  <!--小計を表示-->
+                  <%= subtotal %>
+                </td>
+              </tr>
+              <!--アイテムごとに合計金額に加算-->
+              <% total += (cart_item.item.price*cart_item.amount)*1.1 %>
+            <% end %>
+          </table>
+        </div>
+    </div>
+</div>

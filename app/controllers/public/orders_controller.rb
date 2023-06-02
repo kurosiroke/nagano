@@ -7,12 +7,16 @@ class Public::OrdersController < ApplicationController
     end
     
     def confirm
+        @order = Order.new(order_params)
+        @cart_items = current_customers.cart_items.all
     end
     
     def complete
     end
     
     def create
+        @order = Order.new(order_params)
+        @order.save
     end
     
     def index
@@ -23,7 +27,7 @@ class Public::OrdersController < ApplicationController
 
     private
      def orders_params
-     params.require(:order).permit(:postal_code, :address, :last_name, :first_name)
+     params.require(:order).permit(:payment_methpd, :postal_code, :address, :last_name, :first_name)
      
      end
 end
