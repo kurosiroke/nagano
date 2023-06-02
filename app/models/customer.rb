@@ -7,7 +7,7 @@ class Customer < ApplicationRecord
     has_many :cart_items
     has_many :orders
     
-    #enum payment_method: { false: 0, transfer: 1 }
+    enum is_delete: { false: 0, true: 1 }
       # 会員フルネーム
   def full_name
     self.last_name + " " + self.first_name

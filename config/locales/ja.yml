@@ -4,3 +4,7 @@
         payment_way:
           credit_card: "クレジットカード"
           transfer: "銀行振込"
+      customer:
+        is_deleted:
+          false:"有効"
+          true:"退会"

@@ -45,8 +45,10 @@
         </tr>
         <tr>
           <th>会員ステータス</th>
-          <th><%= @customer.is_deleted %></th>
-          <th></th>
+        　<th><%= f.radio_button :is_deleted, "false" %>
+          　   <%= f.label :is_deleted_false,"有効" %>
+          　　  <%= f.radio_button :is_deleted, "true" %>
+          　　  <%= f.label :is_deleted_true, "退会" %></th>
         </tr>
        </table>
        </div>
