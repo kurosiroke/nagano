@@ -3,7 +3,7 @@
 <h4>注文情報入力</h4>
 <%= form_with model: @order, url: orders_confirm_path, method: :post, local: true do |f| %>  
 　<h5>支払方法</h5>
-　<%= f.radio_button :payment_way, "credit_card" %>
+　<%= f.radio_button :payment_way, "credit_card", checked: true %>
 　<%= f.label :payment_way_credit_card, "クレジットカード" %><br>
 　<%= f.radio_button :payment_way, "transfer" %>
 　<%= f.label :payment_way_transfer, "銀行振込" %>
@@ -14,12 +14,13 @@
         <%= current_customer.address %><br>　<%#住所%>
         <%= current_customer.last_name %><%= current_customer.first_name %>　<%#名前%>
    <br>  
-</div>
+
 <div class="container mt-4">
   <div class="row justify-content-center">
     <div class="col-6">
        <%= f.submit "確認画面へ進む", class: 'btn btn-sm btn-primary ml-4' %>
     </div>
   </div>
+</div>
   <% end %>
 </div>

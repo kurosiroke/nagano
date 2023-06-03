@@ -39,5 +39,26 @@
             <% end %>
           </table>
         </div>
+          <teble class="table table-bordered col-2 text-right ml-5">
+            <tr>
+              <td class="bg-light text-center">送料</td>
+              <td class="text-conter">
+                <% @order.postage = 800 %>
+                <%= @order.postage %>
+              </td>
+            </tr><br>
+            <tr>
+              <td class="bg-light text-center">商品合計</th>
+              <td class="text-center"><%= total %></td>
+            </tr><br>
+            <tr>
+              <th>請求金額</th>
+                <td>
+                   <% @order.total_cash = @order.postage + total %>
+                   <%= @order.total_cash %>
+                </td>
+            </tr><br>
+          </teble>
+        </div>
     </div>
 </div>
