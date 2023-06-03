@@ -7,8 +7,8 @@ class Public::OrdersController < ApplicationController
     end
     
     def confirm
-        @order = Order.new(order_params)
-        @cart_items = current_customers.cart_items.all
+        @order = Order.new(orders_params)
+        @cart_items = current_customer.cart_items.all
     end
     
     def complete
@@ -22,8 +22,6 @@ class Public::OrdersController < ApplicationController
     def index
     end
     
-    def show
-    end
 
     private
      def orders_params
