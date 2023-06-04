@@ -13,7 +13,7 @@
                 <th>数量</th>
                 <th>小計</th>
             </tr>
-            <!--合計金額totalの初期化-->
+            <%# 合計金額totalの初期化%>
             <% total = 0 %>
             <% @cart_items.each do |cart_item| %>
               <tr>
@@ -22,15 +22,16 @@
                   <%= cart_item.item.name %>
                 </td>
                 <td>
-                  <%= (cart_item.item.price*1.1).to_i %>　<%#商品単価(価格×1.08)%>
+                  <%= (cart_item.item.price*1.1).to_i %> <%#商品単価(価格×1.08)%>
                 </td>
                 <td>
                   <%= cart_item.amount %>
                 </td>
                 <td>
-                  <!--小計の計算-->
+                  <%#小計の計算%>
                   <% subtotal = ((cart_item.item.price*cart_item.amount)*1.1).to_i %>
-                  <!--小計を表示-->
+                  <%# .to_i ← これで小数点以下を消す%>
+                  <%#小計を表示%>
                   <%= subtotal %>
                 </td>
               </tr>
@@ -39,26 +40,48 @@
             <% end %>
           </table>
         </div>
-          <teble class="table table-bordered col-2 text-right ml-5">
+        <div class="col-2 ml-3">
+          <table class="table table-bordered">
             <tr>
-              <td class="bg-light text-center">送料</td>
+              <th class="bg-light text-center">送料</th>
               <td class="text-conter">
                 <% @order.postage = 800 %>
                 <%= @order.postage %>
               </td>
-            </tr><br>
+            </tr>
             <tr>
-              <td class="bg-light text-center">商品合計</th>
-              <td class="text-center"><%= total %></td>
-            </tr><br>
+              <th class="bg-light text-center">商品合計</th>
+              <td class="text-center"><%= total.to_i %></td>
+            </tr>
             <tr>
               <th>請求金額</th>
                 <td>
                    <% @order.total_cash = @order.postage + total %>
                    <%= @order.total_cash %>
                 </td>
-            </tr><br>
-          </teble>
+            </tr>
+          </table>
         </div>
+    </div>
+    <div class="row px-5 px-sm-0">
+      <h5>支払方法</h5>
+        <%= @order.payment_way_i18n %>
+      <h5>お届け先</h5>
+        <p>
+         〒<%= current_customer.postal_code %> <%# 郵便番号 %>
+           <%= current_customer.address %><br>  <%#住所%>
+           <%= current_customer.last_name %><%= current_customer.first_name %>  <%#名前%>
+        </p><br>  
+    </div>
+    <div class="container mt-4">
+      <div class="row justify-content-center">
+        <div class="col-6">
+           <%= form_with model: @order, url: orders_path, local: true do |f| %> 
+           <%= f.hidden_field :payment_way, :value => @order.payment_way %>
+           <%# f.hidden_field ←createに選択したenumを渡すために必要なもの%>
+           <%= f.submit "確認画面へ進む", class: 'btn btn-sm btn-success ml-4' %>
+          <% end %>
+        </div>
+      </div>
     </div>
 </div>

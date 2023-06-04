@@ -2,17 +2,16 @@
 <div class="container px-5 px-sm-0">
 <h4>注文情報入力</h4>
 <%= form_with model: @order, url: orders_confirm_path, method: :post, local: true do |f| %>  
-　<h5>支払方法</h5>
-　<%= f.radio_button :payment_way, "credit_card", checked: true %>
-　<%= f.label :payment_way_credit_card, "クレジットカード" %><br>
-　<%= f.radio_button :payment_way, "transfer" %>
-　<%= f.label :payment_way_transfer, "銀行振込" %>
-　
-  <h5>お届け先</h5>　　　<%#[:address_option]=="0"として設定する%>
+  <h5>支払方法</h5>
+  <%= f.radio_button :payment_way, "credit_card", checked: true %>
+  <%= f.label :payment_way_credit_card, "クレジットカード" %><br>
+  <%= f.radio_button :payment_way, "transfer" %>
+  <%= f.label :payment_way_transfer, "銀行振込" %>
+  <h5>お届け先</h5><%#[:address_option]=="0"として設定する%>
    <br>
      〒<%= current_customer.postal_code %> <%# 郵便番号 %>
-        <%= current_customer.address %><br>　<%#住所%>
-        <%= current_customer.last_name %><%= current_customer.first_name %>　<%#名前%>
+        <%= current_customer.address %><br> <%#住所%>
+        <%= current_customer.last_name %><%= current_customer.first_name  <%#名前%>
    <br>  
 
 <div class="container mt-4">
