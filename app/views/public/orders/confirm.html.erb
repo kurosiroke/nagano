@@ -63,17 +63,25 @@
           </table>
         </div>
     </div>
-    <div class="row px-5 px-sm-0">
-      <h5>支払方法</h5>
-        <%= @order.payment_way_i18n %>
-      <h5>お届け先</h5>
-        <p>
-         〒<%= current_customer.postal_code %> <%# 郵便番号 %>
-           <%= current_customer.address %><br>  <%#住所%>
-           <%= current_customer.last_name %><%= current_customer.first_name %>  <%#名前%>
-        </p><br>  
+    <div class="row">
+      <div class="col-7 offset-1">
+        <table>
+          <tr>
+            <th style="padding-right: 2em">支払方法</th>
+            <td><%= @order.payment_way_i18n %></td>
+          </tr>
+          <tr>
+            <th>お届け先</th>
+            <td> 
+              〒<%= current_customer.postal_code %> <%# 郵便番号 %>
+               <%= current_customer.address %><br>  <%#住所%>
+               <%= current_customer.last_name %><%= current_customer.first_name %>  <%#名前%>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
-    <div class="container mt-4">
+    <div class="mt-4">
       <div class="row justify-content-center">
         <div class="col-6">
            <%= form_with model: @order, url: orders_path, local: true do |f| %> 
