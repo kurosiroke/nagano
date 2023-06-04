@@ -17,14 +17,14 @@ class Public::OrdersController < ApplicationController
     def create
         @order = Order.new(orders_params)
         @order.customer_id = current_customer.id
-        @order.save!
+        @order.save
         current_customer.cart_items.each do |cart|
                   order_item = OrderDetail.new
                   order_item.item_id = cart.item_id
                   order_item.order_id = @order.id
                   order_item.amount = cart.amount
                   order_item.price = cart.item.price
-                  order_item.save!
+                  order_item.save
         end
         current_customer.cart_items.destroy_all
         
@@ -43,7 +43,7 @@ class Public::OrdersController < ApplicationController
 
     private
      def orders_params
-     params.require(:order).permit(:postage, :payment_way, :postal_code, :address, :last_name, :first_name, :total_payment, )
+     params.require(:order).permit(:postage, :payment_way, :postal_code, :address, :name, :total_cash)
      
      end
 end
