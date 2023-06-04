@@ -1,7 +1,8 @@
 <p id="notice"></p>
 <div class="container">
   <div class="row">
-  <h3>注文情報確認</h3>
+  <h3>注文情報一覧</h3>
+  </div>
     <table class="table col-10 table-bordered">
      <tbody>
       <tr class="table-secondary">
@@ -15,14 +16,17 @@
         
     <% @orders.each do |order| %>
        <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><%= link_to "表示する", order_path,class: "btn btn-primary" %></td>
+        <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+        <td><%= order.postal_code + order.address %></td>
+        <td>
+            <% order.order_details.each do |order_detail| %>
+            <%= order_detail.item.name %>
+            <% end %>
+        </td>
+        <td><%= order.total_cash %></td>
+        <td><%= link_to "表示する", order_path(order.id),class: "btn btn-primary" %></td>
        </tr>
        <% end %>
      </tbody>
     </table>
-  </div>
 </div>

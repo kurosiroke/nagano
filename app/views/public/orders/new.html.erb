@@ -7,7 +7,7 @@
   <%= f.label :payment_way_credit_card, "クレジットカード" %><br>
   <%= f.radio_button :payment_way, "transfer" %>
   <%= f.label :payment_way_transfer, "銀行振込" %>
-  <h5>お届け先</h5><%#[:address_option]=="0"として設定する%>
+  <h5>お届け先</h5>
    <br>
      〒<%= current_customer.postal_code %> <%# 郵便番号 %>
         <%= current_customer.address %><br> <%#住所%>
