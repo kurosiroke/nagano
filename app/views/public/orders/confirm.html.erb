@@ -43,19 +43,19 @@
         <div class="col-2 ml-3">
           <table class="table table-bordered">
             <tr>
-              <th class="bg-light text-center">送料</th>
+              <th class="bg-secondary text-center">送料</th>
               <td class="text-conter">
                 <% @order.postage = 800 %>
                 <%= @order.postage %>
               </td>
             </tr>
             <tr>
-              <th class="bg-light text-center">商品合計</th>
+              <th class="bg-secondary text-center">商品合計</th>
               <td class="text-center"><%= total.to_i %></td>
             </tr>
             <tr>
-              <th>請求金額</th>
-                <td>
+              <th class="bg-secondary text-center">請求金額</th>
+                <td class="text-center">
                    <% @order.total_cash = @order.postage + total %>
                    <%= @order.total_cash %>
                 </td>
