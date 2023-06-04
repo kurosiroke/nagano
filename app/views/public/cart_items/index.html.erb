@@ -20,6 +20,7 @@
         <% if current_customer.cart_items.present? %><%#カート内に商品があった場合%>
         <% @cart_items.each do |cart_item| %>
         <% @total_cash = @total_cash+ cart_item.subtotal %>
+          <tr>
             <td>
               <%= image_tag cart_item.item.get_image(100,100) %> <%##商品画像%>
               <%= cart_item.item.name %>

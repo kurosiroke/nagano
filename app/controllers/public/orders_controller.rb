@@ -1,5 +1,5 @@
 class Public::OrdersController < ApplicationController
-    #before_action :authenticate_customers!, except: [:top, :about, :items, :registrations]
+    #before_action :authenticate_customers!
 
     def new
         @order = Order.new
@@ -16,14 +16,15 @@ class Public::OrdersController < ApplicationController
     
     def create
         @order = Order.new(orders_params)
-        @order.save
+        @order.customer_id = current_customer.id
+        @order.save!
         current_customer.cart_items.each do |cart|
                   order_item = OrderDetail.new
                   order_item.item_id = cart.item_id
                   order_item.order_id = @order.id
                   order_item.amount = cart.amount
                   order_item.price = cart.item.price
-                  order_item.save
+                  order_item.save!
         end
         current_customer.cart_items.destroy_all
         
@@ -32,8 +33,13 @@ class Public::OrdersController < ApplicationController
     end
     
     def index
+        @orders = current_customer.orders
+        
     end
     
+    def show
+        @order = current_customer.orders.find(params[:id])
+    end
 
     private
      def orders_params
