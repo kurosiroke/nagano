@@ -51,7 +51,7 @@
             </tr>
             <tr>
               <th class="bg-secondary text-center">商品合計</th>
-              <td class="text-center"><%= total.to_i %></td>
+              <td class="text-"><%= total.to_i %></td>
             </tr>
             <tr>
               <th class="bg-secondary text-center">請求金額</th>
@@ -90,7 +90,7 @@
            <%= f.hidden_field :postal_code, :value => current_customer.postal_code %>
            <%= f.hidden_field :address, :value => current_customer.address %>
            <%= f.hidden_field :name, :value => current_customer.last_name + current_customer.first_name %>
-           <%= f.hidden_field :total_cash, :value =>@order.total_cash %>
+           <%= f.hidden_field :total_cash, :value => @order.total_cash %>
            <%= f.hidden_field :postage, :value =>800 %>
            <%= f.submit "確認画面へ進む", class: 'btn btn-sm btn-success ml-4' %>
           <% end %>

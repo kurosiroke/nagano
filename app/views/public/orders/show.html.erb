@@ -1,8 +1,5 @@
-<p id="notice"></p>
 <div class="container">
-  <div class="row">
-  <h3>注文履歴詳細</h3>
-  </div>
+  <h3 class="pt-3">注文履歴詳細</h3>
   <div class="row">
     <div class="col-5">
       <h5>注文情報</h5>  
@@ -25,5 +22,45 @@
           </tr>
         </table>
     </div>
+    <div class="col-5">
+      <h5>請求情報</h5>  
+        <table class="table table-bordered">
+          <tr>
+            <th class="bg-secondary text-center col-4">商品合計</th>
+            <td><%= @order.total_cash - @order.postage %></td>
+          </tr>
+          <tr>
+            <th class="bg-secondary text-center">配送料</th>
+            <td>
+              <% @order.postage = 800 %>
+              <%= @order.postage %>
+            </td>
+          </tr>
+          <tr>
+            <th class="bg-secondary text-center">ご請求金額</th>
+            <td>
+              <%= @order.total_cash %></td>
+          </tr>
+        </table>
+      </div>
   </div>
-</div>
+  <div class="row">
+    <div class="col-8">
+      <h5>注文内容</h5>
+        <table class="table table-bordered">
+          <tr class="bg-secondary text-center">
+            <th>商品</th>
+            <th>単価（税込）</th>
+            <th>個数</th>
+            <th>小計</th>
+          </tr>
+           <% @order.order_details.each do |t| %>
+          <tr>
+            <td><%= t.order_id.order_name%></td>
+          </tr>
+           <% end %>
+        </table>
+    </div>
+  </div>
+ </div>
+ 
