@@ -20,17 +20,26 @@ class Public::CartItemsController < ApplicationController
       end
         
       def update
+        # <id>番のcartitemをupdate
+        # これと、createで既に商品は見つけれているため、下のコメアウトの文はいらない。
         @cart_item = CartItem.find(params[:id])
-        @cart_item.update(cart_item_params)
-        if @cart_items.cart_items.find_by(item_id: params[:cart_item][:item.id])
-         cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
-         cart_item.amount += params[:cart_item][:amount].to_i
-         cart_item.save
-         redirect_to cart_items_path
-        elsif @cart_item.save
-            　@cart_items = current_member.cart_items.all
-            　render cart_items_path
+        
+        unless @cart_item.customer.id == current_customer.id
+            redirect_to cart_items_path
         end
+        
+         @cart_item.update(cart_item_params)
+         redirect_to cart_items_path
+         
+        # if @cart_items.cart_items.find_by(item_id: params[:cart_item][:item.id])
+        #  cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
+        #  cart_item.amount += params[:cart_item][:amount].to_i
+        #  cart_item.save
+         
+        # elsif @cart_item.save
+        #       @cart_items = current_member.cart_items.all
+        #       render cart_items_path
+        # end
       end
       
       def destroy

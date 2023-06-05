@@ -11,7 +11,7 @@
           <tr>
             <th class="bg-secondary text-center">配送先</th>
             <td>
-                <%= @order.postal_code %> <br>
+                〒<%= @order.postal_code %> <br>
                 <%= @order.address %> <br>
                 <%= @order.name %>
             </td>
@@ -54,9 +54,12 @@
             <th>個数</th>
             <th>小計</th>
           </tr>
-           <% @order.order_details.each do |t| %>
+           <% @order.order_details.each do |order_detail| %>
           <tr>
-            <td><%= t.order_id.order_name%></td>
+            <td><%= order_detail.item.name %></td>
+            <td><%= order_detail.price %></td>
+            <td><%= order_detail.amount %></td>
+            <td><%= order_detail.total_price %></td>
           </tr>
            <% end %>
         </table>
