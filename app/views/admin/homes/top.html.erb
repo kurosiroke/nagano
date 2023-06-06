@@ -1,16 +1,16 @@
+<p id="notice"></p>
 <div class="container">
-  <h3 class="pt-3">注文履歴一覧</h3>
-  <div class="row">
-    <div class="col-5">
-      <table class="table table-bordered">
+    <h3>注文履歴一覧</h3>
+ <div class="row">
+      <table class="col-10 table table-bordered">
         <tbody>
-          <tr>
+          <tr class="table-secondary">
         　　<td>購入日時</td>
         　　<td>購入者</td>
         　　<td>注文個数</td>
           </tr>
         </tbody>
-        <%= @admin.orders.each do |admin| %>
-    </div>
+        <%#= @admin.order.each do |admin| %>
+        <%# end %>
   </div>
 </div>
