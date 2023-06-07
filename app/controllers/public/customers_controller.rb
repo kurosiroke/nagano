@@ -11,6 +11,9 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
+    @customer = current_customer
+    @customer.update(customer_params)
+    redirect_to my_page_path
   end
 
   def unsubscribe
@@ -25,6 +28,6 @@ class Public::CustomersController < ApplicationController
     
   private
      def customer_params
-     params.require(:customer).permit(:full_name, :first_name, :email, :is_deleted)
+     params.require(:customer).permit(:full_name, :full_name_kana, :postal_code, :address, :telephone_number,:email, :is_deleted)
      end
 end

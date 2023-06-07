@@ -54,15 +54,16 @@
           </tbody>
          </table>
       </div>
-        <% end %>
+        
         <div class="text_field">
         <table class="col-12">
           <tr>
             <th style="padding-right: 5em"></th>
-            <th><%= f.submit "変更を保存", my_page_path, class: 'btn btn-sm btn-success' %></th>
-            <th><%= link_to "退会する", unsubscribe_path, class: "btn btn-sm btn-danger" %></th>
+            <th><%= f.submit "変更を保存", class: 'btn btn-sm btn-success' %></th>
+            <th><%= link_to "退会する", class: 'btn btn-sm btn-primary' %></th>
           </tr>
         </table>
+        <% end %>
         </div>
         </div>
       </div>
