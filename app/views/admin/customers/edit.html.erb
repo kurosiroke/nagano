@@ -4,7 +4,7 @@
    <h2><%= @customer.full_name %>さんの会員情報編集</h2>
    </div>
     <div class="col-md-8 col-md-offset-2">
-    <%= form_with model: @customer, do |f| %> 
+    <%= form_with model: @customer, url: admin_customer_path(@customer.id) do |f| %> 
      <div class="form-group">
        <label for="customer_id"></label>
        <table>
@@ -52,11 +52,10 @@
         </tr>
        </table>
        </div>
-         <%= f.submit %>
-     <% end %>
-     <div class="text-center">
+       <div class="text-center">
         <%= f.submit "変更を保存", class: 'btn btn-sm btn-success' %>
-     </div>
+       </div>
+    <% end %>
   　</div>
   </div>
   
