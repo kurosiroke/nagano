@@ -10,7 +10,7 @@ class Customer < ApplicationRecord
     #enum is_delete: { false: 0, true: 1 }
       # 会員フルネーム
   def full_name
-    self.last_name + " " + self.first_name
+    last_name + " " + first_name
   end
   
   def full_name_kana
