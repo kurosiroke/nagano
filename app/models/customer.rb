@@ -4,6 +4,15 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
+  validates :last_name, :first_name, presence: true
+  validates :password, presence: true, length: { minimum: 6 }
+            
+  validates :email, presence: true
+  
+  validates :last_name_kana, :first_name_kana, presence: true 
+            
+         
+         
     has_many :cart_items
     has_many :orders
     
