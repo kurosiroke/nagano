@@ -5,7 +5,7 @@ class Public::ItemsController < ApplicationController
     end
     
     def create
-      
+
     end
     
     def show
