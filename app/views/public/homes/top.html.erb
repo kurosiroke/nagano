@@ -10,7 +10,7 @@
     <% @items.each do |item| %>
     <div class="col-md-3">
       <%= image_tag item.get_image(100,100) %><br>
-      <%= link_to item.name,admin_item_path(item.id) %><br>
+      <%= link_to item.name,item_path(item.id) %><br>
       ￥<%= (item.price * 1.1).floor %><br>
     </div>
     <% end %>
