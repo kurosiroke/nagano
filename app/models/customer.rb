@@ -5,7 +5,6 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   validates :last_name, :first_name, presence: true
-  validates :password, presence: true, length: { minimum: 6 }
             
   validates :email, presence: true
   

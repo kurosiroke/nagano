@@ -5,7 +5,7 @@
     <div class="col-11">
       <p>会員の方はこちらからログイン</p>
     </div>
-    <div class="col-md-8 px-5 px-sm-0 mx-auto">
+    <div class="col-8 mx-auto">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
         <%= f.label :メールアドレス %>
@@ -15,17 +15,13 @@
         <%= f.label :パスワード %>
         &emsp;&emsp;&emsp;&emsp;<%= f.password_field :password, autocomplete: "current-password" %>
       </div><br>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-9">
-      <div class= "text-center">
-      <%= f.submit "ログイン", class: "btn btn-primary" %>
+      <div class="d-flex align-items-center">
+        <%= f.submit "ログイン", class: "btn btn-primary" %>
       </div>
     </div>
-  </div>
     <% end %>
-  </div><br>
+    </div>
+    <br>
   <div class="row">
     <div class="col-1">
     </div>
