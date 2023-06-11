@@ -5,11 +5,11 @@
       <h5>注文情報</h5>  
         <table class="table table-bordered">
           <tr>
-            <th class="bg-secondary text-center">注文日</th>
+            <th class="table-secondary text-center">注文日</th>
             <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
           </tr>
           <tr>
-            <th class="bg-secondary text-center">配送先</th>
+            <th class="table-secondary text-center">配送先</th>
             <td>
                 〒<%= @order.postal_code %> <br>
                 <%= @order.address %> <br>
@@ -17,7 +17,7 @@
             </td>
           </tr>
           <tr>
-            <th class="bg-secondary text-center col-3">支払方法</th>
+            <th class="table-secondary text-center col-3">支払方法</th>
             <td><%= @order.payment_way_i18n %></td>
           </tr>
         </table>
@@ -26,18 +26,18 @@
       <h5>請求情報</h5>  
         <table class="table table-bordered">
           <tr>
-            <th class="bg-secondary text-center col-4">商品合計</th>
+            <th class="table-secondary text-center col-4">商品合計</th>
             <td><%= @order.total_cash - @order.postage %></td>
           </tr>
           <tr>
-            <th class="bg-secondary text-center">配送料</th>
+            <th class="table-secondary text-center">配送料</th>
             <td>
               <% @order.postage = 800 %>
               <%= @order.postage %>
             </td>
           </tr>
           <tr>
-            <th class="bg-secondary text-center">ご請求金額</th>
+            <th class="table-secondary text-center">ご請求金額</th>
             <td>
               <%= @order.total_cash %></td>
           </tr>
@@ -48,7 +48,7 @@
     <div class="col-8">
       <h5>注文内容</h5>
         <table class="table table-bordered">
-          <tr class="bg-secondary text-center">
+          <tr class="table-secondary text-center">
             <th>商品</th>
             <th>単価（税込）</th>
             <th>個数</th>

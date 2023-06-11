@@ -46,11 +46,6 @@
               <th><%= f.email_field :email %></th>
               <th></th>
           </tr>
-          <tr>
-              <th>会員ステータス</th>
-              <th><%= @customer.is_deleted %></th>
-              <th></th>
-          </tr>
           </tbody>
          </table>
       </div>
@@ -60,7 +55,7 @@
           <tr>
             <th style="padding-right: 5em"></th>
             <th><%= f.submit "変更を保存", class: 'btn btn-sm btn-success' %></th>
-            <th><%= link_to "退会する", unsubscribe_path, class: 'btn btn-sm btn-primary' %></th>
+            <th><%= link_to "退会する", unsubscribe_path, class: 'btn btn-sm btn-danger' %></th>
           </tr>
         </table>
         <% end %>
