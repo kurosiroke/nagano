@@ -5,10 +5,10 @@ class Item < ApplicationRecord
 
     has_one_attached :image
     
-    validates :image, presence: false
-    validates :name, presence: false
-    validates :introduction, presence: false
-    validates :price, presence: false
+    validates :image, presence: true
+    validates :name, presence: true
+    validates :introduction, presence: true
+    validates :price, presence: true
 
    def get_image(width,height)
     unless image.attached?
