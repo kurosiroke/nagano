@@ -4,6 +4,11 @@ class Item < ApplicationRecord
     has_many :order_details
 
     has_one_attached :image
+    
+    validates :image, presence: false
+    validates :name, presence: false
+    validates :introduction, presence: false
+    validates :price, presence: false
 
    def get_image(width,height)
     unless image.attached?

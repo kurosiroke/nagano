@@ -2,6 +2,10 @@ class Public::OrdersController < ApplicationController
     #before_action :authenticate_customers!
 
     def new
+        cart_items = current_customer.cart_items
+        if cart_items.length == 0
+            redirect_to cart_items_path
+        end 
         @order = Order.new
         @address = current_customer.address
     end
