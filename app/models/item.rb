@@ -21,4 +21,8 @@ class Item < ApplicationRecord
    def with_tax_price
     (price * 1.1).floor
    end
+   
+   def number_to_currency #金額に，を付ける
+        "#{price.to_s(:delimited, delimiter: ',')}"
+   end
 end

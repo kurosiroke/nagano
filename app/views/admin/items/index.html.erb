@@ -23,7 +23,7 @@
             <%= link_to item.name,admin_item_path(item.id) %>
           </td>
           <td>
-            <%= item.price %>
+            <%= item.number_to_currency %>
           </td>
         </tr> 
       <% end %>
