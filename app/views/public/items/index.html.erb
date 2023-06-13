@@ -6,7 +6,7 @@
     <div class="col-md-3">
       <%= link_to image_tag(item.get_image(100,100)),item_path(item.id)%><br>
       <%= link_to item.name,item_path(item.id) %><br>
-      ￥<%= (item.price * 1.1).floor %><br>
+      ￥<%= item.with_tax_price.to_s(:delimited, delimiter: ',') %><br>
     </div>
     <% end %>
 </div>
